@@ -10,8 +10,8 @@ license = "MIT"
 license-file = "LICENSE.txt"
 documentation = "https://docs.rs/waterman"
 homepage = "https://github.com/cyberkutti-iedc/Niti-core/tree/main/waterman"
-keywords = ["avr", "arduino", "avrdude", "embedded", "waterman"]
-categories = ["embedded", "hardware-support", "development-tools", "cli-tools", "utils"]
+keywords = ["avr", "arduino", "avrdude", "waterman"]
+categories = ["embedded", "hardware-support", "development-tools"]
 
 # Optional metadata for improved discoverability
 description-long = """
