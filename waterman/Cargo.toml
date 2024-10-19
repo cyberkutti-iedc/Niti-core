@@ -1,14 +1,28 @@
 [package]
-name = "WaterMan"
+name = "waterman"
 version = "0.1.0"
 authors = ["Sreeraj V Rajesh <cyberkutti@gmail.com>"]
 edition = "2021"
-description = "Tool to easily flash code onto an AVR microcontroller with avrdude"
+description = "A CLI tool to easily flash code onto AVR microcontrollers using avrdude, enhancing the development workflow for embedded Rust projects."
 readme = "README.md"
-repository = "avr-hal/tree/main/"
+repository = "https://github.com/cyberkutti-iedc/Niti-core/tree/main/waterman"
 license = "MIT"
-keywords = ["avr", "arduino", "avrdude","niti","niti-dev board","waterman"]
-categories = ["embedded", "hardware-support", "development-tools","arduino"]
+documentation = "https://docs.rs/waterman"
+homepage = "https://github.com/cyberkutti-iedc/Niti-core/tree/main/waterman"
+keywords = ["avr", "arduino", "avrdude", "embedded", "niti", "waterman", "niti-dev-board"]
+categories = ["embedded", "hardware-support", "development-tools", "arduino", "command-line-utilities"]
+
+
+# Optional metadata for improved discoverability
+description-long = """
+WaterMan is a command-line tool designed to make the flashing of code onto AVR microcontrollers
+simple and efficient. It wraps around `avrdude` and adds useful functionality for AVR development,
+particularly for use with the Niti dev board and similar Arduino-compatible devices.
+"""
+exclude = [".gitignore", "tests/*", "examples/*"]
+license-file = "LICENSE"
+version-requirements = ">=1.0.0"
+
 
 [dependencies]
 colored = "2.0.0"
