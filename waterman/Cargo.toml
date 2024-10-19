@@ -7,6 +7,7 @@ description = "A CLI tool to easily flash code onto AVR microcontrollers using a
 readme = "README.md"
 repository = "https://github.com/cyberkutti-iedc/Niti-core/tree/main/waterman"
 license = "MIT"
+license-file = "LICENSE.txt"
 documentation = "https://docs.rs/waterman"
 homepage = "https://github.com/cyberkutti-iedc/Niti-core/tree/main/waterman"
 keywords = ["avr", "arduino", "avrdude", "embedded", "niti", "waterman", "niti-dev-board"]
@@ -20,7 +21,6 @@ simple and efficient. It wraps around `avrdude` and adds useful functionality fo
 particularly for use with the Niti dev board and similar Arduino-compatible devices.
 """
 exclude = [".gitignore", "tests/*", "examples/*"]
-license-file = "LICENSE"
 version-requirements = ">=1.0.0"
 
 
