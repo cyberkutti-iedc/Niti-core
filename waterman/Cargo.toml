@@ -1,0 +1,24 @@
+[package]
+name = "WaterMan"
+version = "0.1.0"
+authors = ["Sreeraj V Rajesh <cyberkutti@gmail.com>"]
+edition = "2021"
+description = "Tool to easily flash code onto an AVR microcontroller with avrdude"
+readme = "README.md"
+repository = "avr-hal/tree/main/"
+license = "MIT"
+keywords = ["avr", "arduino", "avrdude","niti","niti-dev board","waterman"]
+categories = ["embedded", "hardware-support", "development-tools","arduino"]
+
+[dependencies]
+colored = "2.0.0"
+tempfile = "3.2.0"
+serialport = "4.0.0"
+anyhow = "1.0.38"
+git-version = "0.3.4"
+ctrlc = "3.2.1"
+
+[dependencies.structopt]
+version = "0.3.21"
+default-features = false
+features = ["color"]
