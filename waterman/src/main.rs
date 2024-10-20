@@ -41,7 +41,7 @@ struct Args {
     /// This assumes the board is already resetting.
     /// Instead of giving the reset instructions and waiting for user confirmation, we wait the amount in milliseconds before proceeding.
     /// Set this value to 0 to skip the board reset question instantly.
-    #[structopt(short = "d", long = "reset-delay")]
+    #[structopt(short = "d", long = "reset-delay_ms")]
     reset_delay: Option<u64>,
 
     /// Print the avrdude command that is executed for flashing the binary.
