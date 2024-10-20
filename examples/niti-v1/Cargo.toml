@@ -17,7 +17,7 @@ package = "embedded-hal"
 
 [dependencies.niti-eal]
 path = "../../niti-eal/"
-features = ["arduino-mega2560"]
+features = ["niti-v1"]
 
 # The latest releases of `proc-macro2` do not support the rust toolchain that
 # we use.  Thus, we must fix this dependency to an older version where our
