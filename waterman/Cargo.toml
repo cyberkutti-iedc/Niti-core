@@ -5,11 +5,11 @@ authors = ["Sreeraj V Rajesh <cyberkutti@gmail.com>"]
 edition = "2021"
 description = "A CLI tool to easily flash code onto AVR microcontrollers using avrdude, enhancing the development workflow for embedded Rust projects."
 readme = "README.md"
-repository = "repository = "https://github.com/cyberkutti-iedc/Niti-core"/tree/main/waterman"
+repository = "https://github.com/cyberkutti-iedc/Niti-core/tree/main/waterman"
 license = "MIT"
 license-file = "LICENSE.txt"
 documentation = "https://docs.rs/waterman"
-homepage = "repository = "https://github.com/cyberkutti-iedc/Niti-core"/tree/main/waterman"
+homepage = "https://github.com/cyberkutti-iedc/Niti-core/tree/main/waterman"
 keywords = ["avr", "arduino", "avrdude", "waterman"]
 categories = ["embedded", "hardware-support", "development-tools"]
 
