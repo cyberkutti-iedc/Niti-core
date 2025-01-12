@@ -30,7 +30,7 @@ mod niti;
 pub use niti::*;
 
 #[cfg(any(feature = "niti-v1", feature = "niti-v1"))]
-pub use mega::*;
+pub use niti::*;
 #[cfg(any(
     feature = "arduino-nano",
     feature = "arduino-uno",
