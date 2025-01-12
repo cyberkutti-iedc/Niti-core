@@ -17,19 +17,19 @@ members = [
 
     # MCU HAL crates
     "mcu/atmega-hal",
-    
+
 
     # Higher level crates
-    "niti-eal",
+    "niti-hal",
 
     # Examples
-   "examples/niti-v1",
     "examples/arduino-mega2560",
-    "examples/arduino-uno",
     "examples/arduino-nano",
+    "examples/arduino-uno",
+   "examples/niti-v1",
 ]
 exclude = [
-   
+    # The waterman! Yeah!
     "waterman",
 ]
 resolver = "2"
