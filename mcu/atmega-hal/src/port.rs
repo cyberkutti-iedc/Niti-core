@@ -77,7 +77,7 @@ avr_hal_generic::impl_port_traditional! {
     }
 }
 
-#[cfg(any(feature = "atmega1280", feature = "atmega2560"))]
+#[cfg(any(feature = "atmega1280", feature = "atmega2560", feature = "niti-v1"))]
 avr_hal_generic::impl_port_traditional! {
     enum Ports {
         A: crate::pac::PORTA = [0, 1, 2, 3, 4, 5, 6, 7],

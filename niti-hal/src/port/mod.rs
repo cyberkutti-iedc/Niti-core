@@ -18,12 +18,17 @@
 
 
 
-#[cfg(feature = "arduino-leonardo")]
-pub use leonardo::*;
+
 #[cfg(any(feature = "arduino-mega2560", feature = "arduino-mega1280"))]
 mod mega;
 #[cfg(any(feature = "arduino-mega2560", feature = "arduino-mega1280"))]
 pub use mega::*;
+
+#[cfg(any(feature = "niti-v1"))]
+mod niti;
+#[cfg(any(feature = "niti-v1"))]
+pub use niti::*;
+
 #[cfg(any(feature = "niti-v1", feature = "niti-v1"))]
 pub use mega::*;
 #[cfg(any(

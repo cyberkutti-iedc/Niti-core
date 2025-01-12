@@ -5,7 +5,7 @@
 //! Common HAL (hardware abstraction layer) for ATmega* microcontrollers.
 //!
 //! **Note**: This version of the documentation was built for
-#![cfg_attr(feature = "atmega2560", doc = "**NitiV1**.")]
+#![cfg_attr(feature = "niti-v1", doc = "**NitiV1**.")]
 #![cfg_attr(feature = "atmega48p", doc = "**ATmega48P**.")]
 #![cfg_attr(feature = "atmega164pa", doc = "**ATmega164PA**.")]
 #![cfg_attr(feature = "atmega168", doc = "**ATmega168**.")]
@@ -73,7 +73,7 @@ pub use avr_device::atmega164pa as pac;
 pub use avr_device::atmega168 as pac;
 /// Reexport of `atmega2560` from `avr-device`
 ///
-#[cfg(feature = "atmega2560")]
+#[cfg(feature = "atmega2560", feature = "niti-v1")]
 pub use avr_device::atmega2560 as pac;
 /// Reexport of `atmega328p` from `avr-device`
 ///
@@ -199,7 +199,7 @@ macro_rules! pins {
     };
 }
 
-#[cfg(any(feature = "atmega1280", feature = "atmega2560"))]
+#[cfg(any(feature = "atmega1280", feature = "atmega2560", feature = "niti-v1"))]
 #[macro_export]
 macro_rules! pins {
     ($p:expr) => {
