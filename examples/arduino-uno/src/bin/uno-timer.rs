@@ -4,7 +4,7 @@
 
 /*
  This is derived from Rahix' comment to
-https://github.com/Rahix/avr-hal/issues/75
+https://github.com/cyberkutti-iedc/niti-hal/issues/75
 and then modernized to account for API drift since 2020
 
 */
@@ -71,7 +71,7 @@ fn main() -> ! {
 
 pub const fn calc_overflow(clock_hz: u32, target_hz: u32, prescale: u32) -> u32 {
     /*
-    https://github.com/Rahix/avr-hal/issues/75
+    https://github.com/cyberkutti-iedc/niti-hal/issues/75
     reversing the formula F = 16 MHz / (256 * (1 + 15624)) = 4 Hz
      */
     clock_hz / target_hz / prescale - 1

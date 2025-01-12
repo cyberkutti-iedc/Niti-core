@@ -1,7 +1,7 @@
 [package]
-name = "arduino-mega2560-examples"
+name = "niti-v1-examples"
 version = "0.0.0"
-authors = ["Sreeraj V Rajesh<cyberkutti@gmail.com>"]
+authors = ["Sreeraj V Rajesh <cyberkutti@gmail.com>"]
 edition = "2021"
 publish = false
 
@@ -17,10 +17,10 @@ package = "embedded-hal"
 
 [dependencies.niti-hal]
 path = "../../niti-hal/"
-features = ["arduino-mega2560"]
+features = ["niti-v1"]
 
 # The latest releases of `proc-macro2` do not support the rust toolchain that
 # we use.  Thus, we must fix this dependency to an older version where our
-# toolchain is still supported.  See https://github.com/Rahix/avr-hal/issues/537
+# toolchain is still supported.  See https://github.com/cyberkutti-iedc/niti-hal/issues/537
 [build-dependencies.proc-macro2]
 version = "=1.0.79"

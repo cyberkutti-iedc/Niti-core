@@ -45,7 +45,7 @@ fn main() -> ! {
     let dp = niti_hal::Peripherals::take().unwrap();
     let pins = niti_hal::pins!(dp);
 
-    // thanks to tsemczyszyn and Rahix: https://github.com/Rahix/avr-hal/issues/240
+    // thanks to tsemczyszyn and Rahix: https://github.com/cyberkutti-iedc/niti-hal/issues/240
     // Configure INT0 for falling edge. 0x03 would be rising edge.
     dp.EXINT.eicra.modify(|_, w| w.isc0().bits(0x02));
     // Enable the INT0 interrupt source.
