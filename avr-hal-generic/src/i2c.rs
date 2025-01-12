@@ -199,10 +199,10 @@ pub trait I2cOps<H, SDA, SCL> {
 /// # Example
 /// (for Arduino Uno)
 /// ```
-/// let dp = arduino_hal::Peripherals::take().unwrap();
-/// let pins = arduino_hal::pins!(dp);
+/// let dp = niti_hal::Peripherals::take().unwrap();
+/// let pins = niti_hal::pins!(dp);
 ///
-/// let mut i2c = arduino_hal::I2c::new(
+/// let mut i2c = niti_hal::I2c::new(
 ///     dp.TWI,
 ///     pins.a4.into_pull_up_input(),
 ///     pins.a5.into_pull_up_input(),

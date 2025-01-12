@@ -6,8 +6,8 @@
 //! compile-time calculation of timing parameters.
 //!
 //! # How To Use
-//! If you are using `arduino-hal`, there is nothing you need to do - the core clock speed is
-//! defined in `arduino-hal` as `arduino_hal::DefaultClock` and the const-generic parameters of all
+//! If you are using `niti-hal`, there is nothing you need to do - the core clock speed is
+//! defined in `niti-hal` as `niti_hal::DefaultClock` and the const-generic parameters of all
 //! peripheral drivers are preset to this value.
 //!
 //! If you are using a MCU HAL like `atmega-hal` or `attiny-hal`, you need to take care of clock
