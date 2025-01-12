@@ -1,8 +1,8 @@
-# 🌟 Niti V1 Board - HAL (Hardware Abstraction Layer) 🚀
+# 🌟 Niti V1 Board - HAL (Hardware Abstraction Layer) 🚀 
 
 ![Niti Logo](https://niti-website-beta.vercel.app/assets/rust-logo-DgTKb-JD.gif)
 
-**Niti V1** is an hardwrae abstraction layer for AVR microcontrollers and common boards like the Niti V1 board. It is based on the [`avr-device`](https://github.com/cyberkutti-iedc/niti-hal) crate and simplifies firmware development for AVR-based microcontrollers.
+**Niti V1** is a hardware abstraction layer for AVR microcontrollers and common boards like the Niti V1 board. It is based on the [`avr-device`](https://github.com/cyberkutti-iedc/niti-hal) crate and simplifies firmware development for AVR-based microcontrollers.
 
 ---
 
@@ -62,18 +62,18 @@ cargo run --bin niti-blink
 
 ## 🏗️ Starting Your Own Project:
 
-To create your own project, use the [`niti-core-template`](https://github.com/cyberkutti-iedc/Niti-core) repository. Install **cargo-generate** and generate a new project:
+To create your own project, use the [`niti-hal-template`](https://github.com/cyberkutti-iedc/niti-hal-template) repository. Install **cargo-generate** and generate a new project:
 
 ```bash
 cargo install cargo-generate
-cargo generate --git https://github.com/cyberkutti-iedc/Niti-core.git
+cargo generate --git https://github.com/cyberkutti-iedc/niti-hal-template.git
 ```
 
 ---
 
 ## 📁 Repository Structure:
 
-The **Niti-hal** repository is organized into different components making up the Hardware Abstraction Layer (hAL). Below is an overview:
+The **Niti-hal** repository is organized into different components making up the Hardware Abstraction Layer (HAL). Below is an overview:
 
 ### `niti-hal` 🧩 ![niti-hal docs](https://img.shields.io/badge/docs-git-4d76ae)
 
@@ -93,7 +93,18 @@ This is the generic HAL that implements most of the HAL functionality using macr
 
 ### `avr-specs/` ⚙️
 
-This directory contains Rust compiler target definitions for all supported microcontrollers. The [`niti-core-template`](https://github.com/cyberkutti-iedc/Niti-core) already includes these for convenience.
+This directory contains Rust compiler target definitions for all supported microcontrollers. The [`niti-hal-template`](https://github.com/cyberkutti-iedc/niti-hal-template) already includes these for convenience.
+
+---
+
+## 📋 Supported Boards:
+
+- Niti V1 Board
+- Arduino Mega 2560
+- Arduino Nano
+- Arduino Nano New Bootloader
+- Arduino Uno
+- Nano168
 
 ---
 
