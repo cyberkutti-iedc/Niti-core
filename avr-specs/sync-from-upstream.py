@@ -4,7 +4,7 @@ import json
 import subprocess
 
 SPECS = {
-    "nitiv1": {
+    "niti-v1": {
         "cpu": "atmega2560",
     },
     "atmega164pa": {

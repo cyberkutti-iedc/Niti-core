@@ -5,6 +5,7 @@
 //! Common HAL (hardware abstraction layer) for ATmega* microcontrollers.
 //!
 //! **Note**: This version of the documentation was built for
+#![cfg_attr(feature = "atmega2560", doc = "**NitiV1**.")]
 #![cfg_attr(feature = "atmega48p", doc = "**ATmega48P**.")]
 #![cfg_attr(feature = "atmega164pa", doc = "**ATmega164PA**.")]
 #![cfg_attr(feature = "atmega168", doc = "**ATmega168**.")]
@@ -46,6 +47,7 @@ compile_error!(
     * atmega1284p
     * atmega8
     * atmega88p
+    *niti-v1
     "
 );
 
