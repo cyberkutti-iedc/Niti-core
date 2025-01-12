@@ -10,4 +10,4 @@ In the past, changes were not really tracked in a human-readable changelog
 beyond the commit-log.  For some time, however, there was somewhat of a
 changelog, see here:
 
-<https://github.com/Rahix/avr-hal/blob/21342dcace7184f01fdc4e9703b01197bd4b4b4f/CHANGELOG.md>
+<https://github.com/cyberkutti-iedc/niti-hal/blob/21342dcace7184f01fdc4e9703b01197bd4b4b4f/CHANGELOG.md>

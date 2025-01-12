@@ -6,7 +6,7 @@
 //! Common HAL (hardware abstraction layer) for Arduino boards.
 //!
 //! **Note**: This version of the documentation was built for
-
+#![cfg_attr(feature = "niti-v1", doc = "**Niti V1 board**.")]
 #![cfg_attr(feature = "arduino-mega2560", doc = "**Arduino Mega 2560**.")]
 #![cfg_attr(feature = "arduino-nano", doc = "**Arduino Nano**.")]
 #![cfg_attr(feature = "arduino-uno", doc = "**Arduino Uno**.")]
@@ -22,7 +22,7 @@
 //! in your project (where `niti-hal` is included with the feature-flag for your board).
 //!
 //! ## Usage
-//! For setting up a new project, the [`avr-hal-template`](https://github.com/Rahix/avr-hal-template)
+//! For setting up a new project, the [`avr-hal-template`](https://github.com/cyberkutti-iedc/niti-hal-template)
 //! is the recommended baseline.  Applications should be built ontop of the following skeleton:
 //!
 //! ```no_run
@@ -40,7 +40,7 @@
 //! }
 //! ```
 //!
-//! For examples, please check the `avr-hal` examples: <https://github.com/Rahix/avr-hal/tree/main/examples>
+//! For examples, please check the `avr-hal` examples: <https://github.com/cyberkutti-iedc/niti-hal/tree/main/examples>
 
 #[cfg(not(feature = "board-selected"))]
 compile_error!(
@@ -48,7 +48,7 @@ compile_error!(
 
     Please select one of the following
 
-   
+    * niti-v1
     * arduino-mega2560
     * arduino-nano
     * arduino-uno
@@ -179,7 +179,7 @@ pub mod prelude {
 
     cfg_if::cfg_if! {
         if #[cfg(any(
-            feature = "arduino-diecimila",
+            feature = "niti-v1",
             feature = "arduino-mega2560",
             feature = "arduino-mega1280",
             feature = "arduino-uno"
@@ -232,6 +232,7 @@ macro_rules! pins {
 /// );
 /// ```
 #[cfg(any(
+    feature = "niti-v1",
     feature = "arduino-mega2560",
     feature = "arduino-mega1280",
     feature = "arduino-uno"

@@ -24,6 +24,8 @@ pub use leonardo::*;
 mod mega;
 #[cfg(any(feature = "arduino-mega2560", feature = "arduino-mega1280"))]
 pub use mega::*;
+#[cfg(any(feature = "niti-v1", feature = "niti-v1"))]
+pub use mega::*;
 #[cfg(any(
     feature = "arduino-nano",
     feature = "arduino-uno",

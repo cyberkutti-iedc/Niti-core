@@ -16,6 +16,7 @@ pub(crate) mod default {
     /// name the types from the HAL crate using your own clock definition.
     #[cfg(any(
         feature = "arduino-mega2560",
+        feature = "niti-v1",
         feature = "arduino-nano",
         feature = "arduino-uno",
         

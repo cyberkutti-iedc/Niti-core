@@ -3,7 +3,7 @@
 //! # Example
 //!
 //! Complete example source code can be found in the repository:
-//! [`atmega2560-i2cdetect.rs`](https://github.com/Rahix/avr-hal/blob/main/examples/atmega2560/src/bin/atmega2560-i2cdetect.rs)
+//! [`atmega2560-i2cdetect.rs`](https://github.com/cyberkutti-iedc/niti-hal/blob/main/examples/atmega2560/src/bin/atmega2560-i2cdetect.rs)
 //!
 //! ```
 //! let dp = atmega_hal::Peripherals::take().unwrap();

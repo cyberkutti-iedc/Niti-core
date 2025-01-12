@@ -2,11 +2,11 @@
 name = "atmega-hal"
 version = "0.1.0"
 
-authors = ["Sreeraj V Rajesh<cyberkutti@gmail.com>"]
+authors = ["Sreeraj V Rajesh <cyberkutti@gmail.com>"]
 edition = "2021"
 description = "HAL crate for ATmega-series AVR microcontrollers"
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/rahix/avr-hal"
+repository = "https://github.com/cyberkutti-iedc/niti-hal"
 keywords = ["avr", "arduino"]
 categories = ["no-std", "embedded", "hardware-support"]
 
@@ -19,6 +19,7 @@ atmega168 = ["avr-device/atmega168", "device-selected"]
 atmega328p = ["avr-device/atmega328p", "device-selected"]
 atmega328pb = ["avr-device/atmega328pb", "device-selected"]
 atmega2560 = ["avr-device/atmega2560", "device-selected"]
+nitiv1 = ["avr-device/niti-v1", "device-selected"]
 
 
 critical-section-impl = ["avr-device/critical-section-impl"]
