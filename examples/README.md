@@ -1,14 +1,19 @@
-## Niti V1 `avr-hal` Examples
+`avr-hal` examples
+==================
+The subdirectories here contain various examples which demonstrate how to write
+firmware using `avr-hal`.  Please note that often examples for a different
+board can be easily ported to other hardware, so if you can't find something
+for your board, look for examples with other hardware as well.
 
-The subdirectories here contain various examples demonstrating how to write firmware using **`avr-hal`** for the Niti V1 board. Note that many examples designed for different boards can often be easily ported to other hardware. If you can't find something specifically for your board, check examples for other boards as well.
-
-All examples are ready to use if you have the respective board available. Just switch to the appropriate subdirectory and run an example via Cargo. For example:
+All examples are ready to use if you have the respective board available.  Just
+switch to the subdirectory and run an example via cargo.  For example:
 
 ```bash
-cd examples/niti-v1
+cd examples/arduino-uno
 
-# Build and run it on a connected Niti V1 board
-cargo run --bin niti-blink
+# Build and run it on a connected board
+cargo run --bin uno-blink
 ```
 
-You need to install **Waterman** by running `cargo install waterman` to enable seamless flashing of your board.
+You need to install [`waterman`](https://crates.io/crates/waterman) with `cargo install waterman` to make
+this work.

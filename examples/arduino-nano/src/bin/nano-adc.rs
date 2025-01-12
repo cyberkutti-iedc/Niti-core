@@ -1,18 +1,18 @@
 #![no_std]
 #![no_main]
 
-use niti_eal::prelude::*;
+use niti_hal::prelude::*;
 use panic_halt as _;
 
-use niti_eal::adc;
+use niti_hal::adc;
 
-#[niti_eal::entry]
+#[niti_hal::entry]
 fn main() -> ! {
-    let dp = niti_eal::Peripherals::take().unwrap();
-    let pins = niti_eal::pins!(dp);
-    let mut serial = niti_eal::default_serial!(dp, pins, 57600);
+    let dp = niti_hal::Peripherals::take().unwrap();
+    let pins = niti_hal::pins!(dp);
+    let mut serial = niti_hal::default_serial!(dp, pins, 57600);
 
-    let mut adc = niti_eal::Adc::new(dp.ADC, Default::default());
+    let mut adc = niti_hal::Adc::new(dp.ADC, Default::default());
 
     let (vbg, gnd, tmp) = (
         adc.read_blocking(&adc::channel::Vbg),
@@ -53,6 +53,6 @@ fn main() -> ! {
         ufmt::uwrite!(&mut serial, "A6: {} A7: {}", a6, a7).unwrap_infallible();
 
         ufmt::uwriteln!(&mut serial, "").unwrap_infallible();
-        niti_eal::delay_ms(1000);
+        niti_hal::delay_ms(1000);
     }
 }

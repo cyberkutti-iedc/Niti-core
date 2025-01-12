@@ -7,7 +7,7 @@
 #![no_std]
 #![no_main]
 
-use niti_eal::prelude::*;
+use niti_hal::prelude::*;
 
 // Documentation build does not like this and fails with the following error, even though
 // everything is fine when compiling the binary.
@@ -27,9 +27,9 @@ fn panic(info: &core::panic::PanicInfo) -> ! {
     // SAFETY: Because main() already has references to the peripherals this is an unsafe
     // operation - but because no other code can run after the panic handler was called,
     // we know it is okay.
-    let dp = unsafe { niti_eal::Peripherals::steal() };
-    let pins = niti_eal::pins!(dp);
-    let mut serial = niti_eal::default_serial!(dp, pins, 57600);
+    let dp = unsafe { niti_hal::Peripherals::steal() };
+    let pins = niti_hal::pins!(dp);
+    let mut serial = niti_hal::default_serial!(dp, pins, 57600);
 
     // Print out panic location
     ufmt::uwriteln!(&mut serial, "Firmware panic!\r").unwrap_infallible();
@@ -48,20 +48,20 @@ fn panic(info: &core::panic::PanicInfo) -> ! {
     let mut led = pins.d13.into_output();
     loop {
         led.toggle();
-        niti_eal::delay_ms(100);
+        niti_hal::delay_ms(100);
     }
 }
 
-#[niti_eal::entry]
+#[niti_hal::entry]
 fn main() -> ! {
-    let dp = niti_eal::Peripherals::take().unwrap();
-    let pins = niti_eal::pins!(dp);
-    let mut serial = niti_eal::default_serial!(dp, pins, 57600);
+    let dp = niti_hal::Peripherals::take().unwrap();
+    let pins = niti_hal::pins!(dp);
+    let mut serial = niti_hal::default_serial!(dp, pins, 57600);
 
     ufmt::uwriteln!(&mut serial, "Hello from Arduino!\r").unwrap_infallible();
     ufmt::uwriteln!(&mut serial, "Panic in 5 seconds!\r").unwrap_infallible();
 
-    niti_eal::delay_ms(5000);
+    niti_hal::delay_ms(5000);
 
     // Panic messages cannot yet be captured because they rely on core::fmt
     // which is way too big for AVR

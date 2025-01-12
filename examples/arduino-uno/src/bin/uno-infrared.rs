@@ -22,7 +22,7 @@
 use core::cell::Cell;
 use panic_halt as _;
 
-use niti_eal::{
+use niti_hal::{
     hal::port::{PD2, PD6, PD7},
     pac::tc0::tccr0b::CS0_A,
     port::mode::{Floating, Input, Output},
@@ -44,11 +44,11 @@ static mut ERROR_LED: Option<Pin<Output, PD6>> = None;
 
 static CMD: Mutex<Cell<Option<IrCmd>>> = Mutex::new(Cell::new(None));
 
-#[niti_eal::entry]
+#[niti_hal::entry]
 fn main() -> ! {
-    let dp = niti_eal::Peripherals::take().unwrap();
-    let pins = niti_eal::pins!(dp);
-    let mut serial = niti_eal::default_serial!(dp, pins, 57600);
+    let dp = niti_hal::Peripherals::take().unwrap();
+    let pins = niti_hal::pins!(dp);
+    let mut serial = niti_hal::default_serial!(dp, pins, 57600);
 
     // Monotonic clock to keep track of the time
     CLOCK.start(dp.TC0);
@@ -92,7 +92,7 @@ fn main() -> ! {
             .unwrap_infallible();
         }
 
-        niti_eal::delay_ms(100);
+        niti_hal::delay_ms(100);
     }
 }
 
@@ -139,7 +139,7 @@ impl Clock {
         }
     }
 
-    pub fn start(&self, tc0: niti_eal::pac::TC0) {
+    pub fn start(&self, tc0: niti_hal::pac::TC0) {
         // Configure the timer for the above interval (in CTC mode)
         tc0.tccr0a.write(|w| w.wgm0().ctc());
         tc0.ocr0a.write(|w| w.bits(Self::TOP));

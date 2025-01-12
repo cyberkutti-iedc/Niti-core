@@ -8,20 +8,20 @@
 #![no_std]
 #![no_main]
 
-use niti_eal::hal::wdt;
+use niti_hal::hal::wdt;
 use panic_halt as _;
 
-#[niti_eal::entry]
+#[niti_hal::entry]
 fn main() -> ! {
-    let dp = niti_eal::Peripherals::take().unwrap();
-    let pins = niti_eal::pins!(dp);
+    let dp = niti_hal::Peripherals::take().unwrap();
+    let pins = niti_hal::pins!(dp);
 
     let mut led = pins.d13.into_output();
     led.set_high();
 
     for _ in 0..20 {
         led.toggle();
-        niti_eal::delay_ms(100);
+        niti_hal::delay_ms(100);
     }
 
     let mut watchdog = wdt::Wdt::new(dp.WDT, &dp.CPU.mcusr);
@@ -29,7 +29,7 @@ fn main() -> ! {
 
     loop {
         led.toggle();
-        niti_eal::delay_ms(1000);
+        niti_hal::delay_ms(1000);
         watchdog.feed();
     }
 }

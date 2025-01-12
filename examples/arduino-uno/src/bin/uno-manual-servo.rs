@@ -18,10 +18,10 @@
 
 use panic_halt as _;
 
-#[niti_eal::entry]
+#[niti_hal::entry]
 fn main() -> ! {
-    let dp = niti_eal::Peripherals::take().unwrap();
-    let pins = niti_eal::pins!(dp);
+    let dp = niti_hal::Peripherals::take().unwrap();
+    let pins = niti_hal::pins!(dp);
 
     // Important because this sets the bit in the DDR register!
     pins.d9.into_output();
@@ -41,7 +41,7 @@ fn main() -> ! {
         // 700 counts => 2.8ms
         for duty in 100..=700 {
             tc1.ocr1a.write(|w| w.bits(duty));
-            niti_eal::delay_ms(20);
+            niti_hal::delay_ms(20);
         }
     }
 }

@@ -4,16 +4,16 @@
 #![no_std]
 #![no_main]
 
-use niti_eal::prelude::*;
+use niti_hal::prelude::*;
 use panic_halt as _;
 
-#[niti_eal::entry]
+#[niti_hal::entry]
 fn main() -> ! {
-    let dp = niti_eal::Peripherals::take().unwrap();
-    let pins = niti_eal::pins!(dp);
-    let mut serial = niti_eal::default_serial!(dp, pins, 57600);
+    let dp = niti_hal::Peripherals::take().unwrap();
+    let pins = niti_hal::pins!(dp);
+    let mut serial = niti_hal::default_serial!(dp, pins, 57600);
 
-    let mut ep = niti_eal::Eeprom::new(dp.EEPROM);
+    let mut ep = niti_hal::Eeprom::new(dp.EEPROM);
     let ep_capacity = ep.capacity();
     ufmt::uwriteln!(&mut serial, "eeprom capacity is:{}\r", ep_capacity).unwrap_infallible();
 
@@ -33,7 +33,7 @@ fn main() -> ! {
         ufmt::uwriteln!(&mut serial, "{}", i).unwrap_infallible();
     }
 
-    let _ = ep.erase(0, niti_eal::Eeprom::CAPACITY);
+    let _ = ep.erase(0, niti_hal::Eeprom::CAPACITY);
 
     loop {}
 }

@@ -13,7 +13,7 @@ use panic_halt as _;
 use avr_device::interrupt;
 use core::cell::RefCell;
 
-type Console = niti_eal::hal::usart::Usart0<niti_eal::DefaultClock>;
+type Console = niti_hal::hal::usart::Usart0<niti_hal::DefaultClock>;
 static CONSOLE: interrupt::Mutex<RefCell<Option<Console>>> =
     interrupt::Mutex::new(RefCell::new(None));
 
@@ -58,11 +58,11 @@ fn demo_print_without_ln() {
     println!("numbers!");
 }
 
-#[niti_eal::entry]
+#[niti_hal::entry]
 fn main() -> ! {
-    let dp = niti_eal::Peripherals::take().unwrap();
-    let pins = niti_eal::pins!(dp);
-    let serial = niti_eal::default_serial!(dp, pins, 57600);
+    let dp = niti_hal::Peripherals::take().unwrap();
+    let pins = niti_hal::pins!(dp);
+    let serial = niti_hal::default_serial!(dp, pins, 57600);
     put_console(serial);
 
     println!("Hello from main!");

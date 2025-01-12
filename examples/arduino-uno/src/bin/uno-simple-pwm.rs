@@ -4,13 +4,13 @@
 #![no_std]
 #![no_main]
 
-use niti_eal::simple_pwm::*;
+use niti_hal::simple_pwm::*;
 use panic_halt as _;
 
-#[niti_eal::entry]
+#[niti_hal::entry]
 fn main() -> ! {
-    let dp = niti_eal::Peripherals::take().unwrap();
-    let pins = niti_eal::pins!(dp);
+    let dp = niti_hal::Peripherals::take().unwrap();
+    let pins = niti_hal::pins!(dp);
 
     let timer0 = Timer0Pwm::new(dp.TC0, Prescaler::Prescale64);
 
@@ -21,7 +21,7 @@ fn main() -> ! {
     loop {
         for x in (0..=255).chain((0..=254).rev()) {
             pwm_led.set_duty(x);
-            niti_eal::delay_ms(10);
+            niti_hal::delay_ms(10);
         }
     }
 }

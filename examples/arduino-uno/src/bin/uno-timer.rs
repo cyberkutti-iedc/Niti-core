@@ -9,9 +9,9 @@ and then modernized to account for API drift since 2020
 
 */
 
-use niti_eal::port::mode::Output;
-use niti_eal::port::Pin;
-use niti_eal::prelude::*;
+use niti_hal::port::mode::Output;
+use niti_hal::port::Pin;
+use niti_hal::prelude::*;
 use avr_device::atmega328p::tc1::tccr1b::CS1_A;
 use avr_device::atmega328p::TC1;
 use core::mem;
@@ -24,12 +24,12 @@ struct InterruptState {
 
 static mut INTERRUPT_STATE: mem::MaybeUninit<InterruptState> = mem::MaybeUninit::uninit();
 
-#[niti_eal::entry]
+#[niti_hal::entry]
 fn main() -> ! {
-    let dp = niti_eal::Peripherals::take().unwrap();
-    let pins = niti_eal::pins!(dp);
+    let dp = niti_hal::Peripherals::take().unwrap();
+    let pins = niti_hal::pins!(dp);
 
-    let mut serial = niti_eal::default_serial!(dp, pins, 57600);
+    let mut serial = niti_hal::default_serial!(dp, pins, 57600);
     ufmt::uwriteln!(&mut serial, "Hello from Arduino!\r").unwrap_infallible();
 
     let led = pins.d13.into_output();
@@ -82,9 +82,9 @@ pub fn rig_timer<W: uWrite<Error = ::core::convert::Infallible>>(tmr1: &TC1, ser
      https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf
      section 15.11
     */
-    use niti_eal::clock::Clock;
+    use niti_hal::clock::Clock;
 
-    const ARDUINO_UNO_CLOCK_FREQUENCY_HZ: u32 = niti_eal::DefaultClock::FREQ;
+    const ARDUINO_UNO_CLOCK_FREQUENCY_HZ: u32 = niti_hal::DefaultClock::FREQ;
     const CLOCK_SOURCE: CS1_A = CS1_A::PRESCALE_256;
     let clock_divisor: u32 = match CLOCK_SOURCE {
         CS1_A::DIRECT => 1,

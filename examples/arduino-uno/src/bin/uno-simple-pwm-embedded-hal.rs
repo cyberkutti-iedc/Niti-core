@@ -5,24 +5,24 @@
 #![no_std]
 #![no_main]
 
-use niti_eal::simple_pwm::*;
-use embedded_hal::delay_ms::DelayNs;
+use niti_hal::simple_pwm::*;
+use embedded_hal::delay::DelayNs;
 use embedded_hal::pwm::SetDutyCycle;
 use panic_halt as _;
 
-fn fade(led: &mut impl SetDutyCycle, delay_ms: &mut impl DelayNs) -> ! {
+fn fade(led: &mut impl SetDutyCycle, delay: &mut impl DelayNs) -> ! {
     loop {
         for pct in (0..=100).chain((0..100).rev()) {
             led.set_duty_cycle_percent(pct).unwrap();
-            delay_ms.delay_ms(10);
+            delay.delay_ms(10);
         }
     }
 }
 
-#[niti_eal::entry]
+#[niti_hal::entry]
 fn main() -> ! {
-    let dp = niti_eal::Peripherals::take().unwrap();
-    let pins = niti_eal::pins!(dp);
+    let dp = niti_hal::Peripherals::take().unwrap();
+    let pins = niti_hal::pins!(dp);
 
     let timer0 = Timer0Pwm::new(dp.TC0, Prescaler::Prescale64);
 
@@ -30,7 +30,7 @@ fn main() -> ! {
     let mut pwm_led = pins.d5.into_output().into_pwm(&timer0);
     pwm_led.enable();
 
-    let mut delay_ms = niti_eal::Delay::new();
+    let mut delay = niti_hal::Delay::new();
 
-    fade(&mut pwm_led, &mut delay_ms);
+    fade(&mut pwm_led, &mut delay);
 }

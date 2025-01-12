@@ -33,10 +33,10 @@ fn rotate(flag: &AtomicBool) -> bool {
     })
 }
 
-#[niti_eal::entry]
+#[niti_hal::entry]
 fn main() -> ! {
-    let dp = niti_eal::Peripherals::take().unwrap();
-    let pins = niti_eal::pins!(dp);
+    let dp = niti_hal::Peripherals::take().unwrap();
+    let pins = niti_hal::pins!(dp);
 
     //Pins used to drive the stepper motor
     let mut dir_pin = pins.d4.into_output();
@@ -69,9 +69,9 @@ fn main() -> ! {
             //Move the stepper motor
             for _ in 0..=50 {
                 step_pin.set_high();
-                niti_eal::delay_us(2000);
+                niti_hal::delay_us(2000);
                 step_pin.set_low();
-                niti_eal::delay_us(2000);
+                niti_hal::delay_us(2000);
             }
         }
     }

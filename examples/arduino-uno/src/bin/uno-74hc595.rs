@@ -16,7 +16,7 @@
 
 use panic_halt as _;
 
-use niti_eal::{
+use niti_hal::{
     hal::port::{PD4, PD5, PD6},
     port::{mode::Output, Pin},
 };
@@ -49,10 +49,10 @@ fn update_shift_register(
     latch_pin.set_high();
 }
 
-#[niti_eal::entry]
+#[niti_hal::entry]
 fn main() -> ! {
-    let dp = niti_eal::Peripherals::take().unwrap();
-    let pins = niti_eal::pins!(dp);
+    let dp = niti_hal::Peripherals::take().unwrap();
+    let pins = niti_hal::pins!(dp);
 
     let mut data_pin = pins.d4.into_output();
     let mut latch_pin = pins.d5.into_output();
@@ -62,13 +62,13 @@ fn main() -> ! {
         let mut data: u8 = 0;
 
         update_shift_register(&mut data_pin, &mut latch_pin, &mut clock_pin, &data);
-        niti_eal::delay_ms(500);
+        niti_hal::delay_ms(500);
 
         for i in 0..8 {
             data |= 1 << i;
 
             update_shift_register(&mut data_pin, &mut latch_pin, &mut clock_pin, &data);
-            niti_eal::delay_ms(500);
+            niti_hal::delay_ms(500);
         }
     }
 }

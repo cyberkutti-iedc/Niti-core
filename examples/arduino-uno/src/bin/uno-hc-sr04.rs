@@ -13,14 +13,14 @@
 #![no_std]
 #![no_main]
 
-use niti_eal::prelude::*;
+use niti_hal::prelude::*;
 use panic_halt as _;
 
-#[niti_eal::entry]
+#[niti_hal::entry]
 fn main() -> ! {
-    let dp = niti_eal::Peripherals::take().unwrap();
-    let pins = niti_eal::pins!(dp);
-    let mut serial = niti_eal::default_serial!(dp, pins, 57600);
+    let dp = niti_hal::Peripherals::take().unwrap();
+    let pins = niti_hal::pins!(dp);
+    let mut serial = niti_hal::default_serial!(dp, pins, 57600);
 
     let mut trig = pins.d2.into_output();
     let echo = pins.d3; // pin is input by default
@@ -38,7 +38,7 @@ fn main() -> ! {
 
         // the trigger must be set to high under 10 µs as per the HC-SR04 datasheet
         trig.set_high();
-        niti_eal::delay_us(10);
+        niti_hal::delay_us(10);
         trig.set_low();
 
         while echo.is_low() {

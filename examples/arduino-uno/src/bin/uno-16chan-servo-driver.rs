@@ -19,15 +19,15 @@
 use panic_halt as _;
 use pwm_pca9685::{Address, Channel, Pca9685};
 
-#[niti_eal::entry]
+#[niti_hal::entry]
 fn main() -> ! {
-    let dp = niti_eal::Peripherals::take().unwrap();
-    let pins = niti_eal::pins!(dp);
+    let dp = niti_hal::Peripherals::take().unwrap();
+    let pins = niti_hal::pins!(dp);
 
     // Digital pin 13 is also connected to an onboard LED marked "L"
     let mut led = pins.d13.into_output();
 
-    let i2c = niti_eal::I2c::new(
+    let i2c = niti_hal::I2c::new(
         dp.TWI,
         pins.a4.into_pull_up_input(),
         pins.a5.into_pull_up_input(),
@@ -52,9 +52,9 @@ fn main() -> ! {
     loop {
         // Blink the LED to indicate that everything is working properly.
         led.toggle();
-        niti_eal::delay_ms(500);
+        niti_hal::delay_ms(500);
         led.toggle();
-        niti_eal::delay_ms(500);
+        niti_hal::delay_ms(500);
 
         pwm.set_channel_off(Channel::C0, current).unwrap();
         pwm.set_channel_off(Channel::C1, servo_min + (servo_max - current))

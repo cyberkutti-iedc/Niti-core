@@ -12,7 +12,7 @@
 #![no_main]
 #![feature(abi_avr_interrupt)]
 
-use niti_eal::prelude::*;
+use niti_hal::prelude::*;
 use core::cell;
 use panic_halt as _;
 
@@ -37,7 +37,7 @@ const MILLIS_INCREMENT: u32 = PRESCALER * TIMER_COUNTS / 16000;
 static MILLIS_COUNTER: avr_device::interrupt::Mutex<cell::Cell<u32>> =
     avr_device::interrupt::Mutex::new(cell::Cell::new(0));
 
-fn millis_init(tc0: niti_eal::pac::TC0) {
+fn millis_init(tc0: niti_hal::pac::TC0) {
     // Configure the timer for the above interval (in CTC mode)
     // and enable its interrupt.
     tc0.tccr0a.write(|w| w.wgm0().ctc());
@@ -72,11 +72,11 @@ fn millis() -> u32 {
 
 // ----------------------------------------------------------------------------
 
-#[niti_eal::entry]
+#[niti_hal::entry]
 fn main() -> ! {
-    let dp = niti_eal::Peripherals::take().unwrap();
-    let pins = niti_eal::pins!(dp);
-    let mut serial = niti_eal::default_serial!(dp, pins, 57600);
+    let dp = niti_hal::Peripherals::take().unwrap();
+    let pins = niti_hal::pins!(dp);
+    let mut serial = niti_hal::default_serial!(dp, pins, 57600);
 
     millis_init(dp.TC0);
 

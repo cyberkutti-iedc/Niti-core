@@ -9,7 +9,7 @@
 #![no_main]
 #![feature(abi_avr_interrupt)]
 
-use niti_eal::port::{mode, Pin};
+use niti_hal::port::{mode, Pin};
 use core::sync::atomic::{AtomicBool, Ordering};
 use either::*;
 use panic_halt as _;
@@ -35,15 +35,15 @@ fn blink_for_range(range: impl Iterator<Item = u16>, leds: &mut [Pin<mode::Outpu
         };
         iter.for_each(|led| {
             led.toggle();
-            niti_eal::delay_ms(ms as u16);
+            niti_hal::delay_ms(ms as u16);
         })
     });
 }
 
-#[niti_eal::entry]
+#[niti_hal::entry]
 fn main() -> ! {
-    let dp = niti_eal::Peripherals::take().unwrap();
-    let pins = niti_eal::pins!(dp);
+    let dp = niti_hal::Peripherals::take().unwrap();
+    let pins = niti_hal::pins!(dp);
 
     // thanks to tsemczyszyn and Rahix: https://github.com/Rahix/avr-hal/issues/240
     // Configure INT0 for falling edge. 0x03 would be rising edge.

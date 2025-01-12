@@ -15,12 +15,12 @@ embedded-hal = "1.0"
 version = "0.2.3"
 package = "embedded-hal"
 
-[dependencies.niti-eal]
-path = "../../niti-eal/"
+[dependencies.niti-hal]
+path = "../../niti-hal/"
 features = ["arduino-nano"]
 
 [dependencies.avr-device]
-version = "0.5.1"
+version = "0.7"
 
 # The latest releases of `proc-macro2` do not support the rust toolchain that
 # we use.  Thus, we must fix this dependency to an older version where our

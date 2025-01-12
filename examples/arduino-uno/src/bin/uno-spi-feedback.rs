@@ -14,21 +14,21 @@
 #![no_std]
 #![no_main]
 
-use niti_eal::prelude::*;
-use niti_eal::spi;
+use niti_hal::prelude::*;
+use niti_hal::spi;
 use embedded_hal_v0::spi::FullDuplex;
 use panic_halt as _;
 
-#[niti_eal::entry]
+#[niti_hal::entry]
 fn main() -> ! {
-    let dp = niti_eal::Peripherals::take().unwrap();
-    let pins = niti_eal::pins!(dp);
+    let dp = niti_hal::Peripherals::take().unwrap();
+    let pins = niti_hal::pins!(dp);
 
     // set up serial interface for text output
-    let mut serial = niti_eal::default_serial!(dp, pins, 57600);
+    let mut serial = niti_hal::default_serial!(dp, pins, 57600);
 
     // Create SPI interface.
-    let (mut spi, _) = niti_eal::Spi::new(
+    let (mut spi, _) = niti_hal::Spi::new(
         dp.SPI,
         pins.d13.into_output(),
         pins.d11.into_output(),
@@ -44,6 +44,6 @@ fn main() -> ! {
         let data = nb::block!(spi.read()).unwrap_infallible();
 
         ufmt::uwriteln!(&mut serial, "data: {}\r", data).unwrap_infallible();
-        niti_eal::delay_ms(1000);
+        niti_hal::delay_ms(1000);
     }
 }
