@@ -5,6 +5,13 @@
 **Niti V1** is a hardware abstraction layer for AVR microcontrollers and common boards like the Niti V1 board. It is based on the [`avr-device`](https://github.com/cyberkutti-iedc/niti-hal) crate and simplifies firmware development for AVR-based microcontrollers.
 
 ---
+---
+
+## **📘 Official Wiki**
+Explore comprehensive guides, examples, and documentation on the **Niti Wiki**:  
+[**cyberkutti-iedc.github.io/niti-wiki/niti_hal/**](https://cyberkutti-iedc.github.io/niti-wiki/niti_hal/)
+
+---
 
 ## 🛠️ Quickstart
 
